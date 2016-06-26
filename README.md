@@ -13,16 +13,16 @@ Include ```bootique-jooq```:
 <dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>com.nhl.bootique.bom</groupId>
-            <artifactId>bootique-bom</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <groupId>io.bootique.bom</groupId>
+            <artifactId>bootique-io-bom</artifactId>
+            <version>0.18-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
         <dependency>
-            <groupId>io.bootique.bom</groupId>
-            <artifactId>bootique-io-bom</artifactId>
-            <version>0.18-SNAPSHOT</version>
+            <groupId>com.nhl.bootique.bom</groupId>
+            <artifactId>bootique-bom</artifactId>
+            <version>0.1-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
