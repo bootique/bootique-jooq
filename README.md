@@ -8,6 +8,29 @@ Integration of Jooq SQL builder with Bootique.
 
 Include ```bootique-jooq```:
 ```xml
+<!-- TODO: until these snapshots are released, they are available from -->
+<!-- http://maven.objectstyle.org/nexus/content/repositories/bootique-snapshots/ -->
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.nhl.bootique.bom</groupId>
+            <artifactId>bootique-bom</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.bom</groupId>
+            <artifactId>bootique-io-bom</artifactId>
+            <version>0.18-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+...
+
 <dependency>
 	<groupId>io.bootique.jooq</groupId>
 	<artifactId>bootique-jooq</artifactId>
