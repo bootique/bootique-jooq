@@ -23,12 +23,21 @@ public class DefaultJooqFactoryFactory {
         this.dialect = dialect;
     }
 
+    /**
+     * Sets a flag that enables or disables SQL execution logging by Jooq. "false" is the default. If you want to set
+     * it to true, also make sure 'org.jooq' logger is allowed to log at DEBUG level.
+     *
+     * @param executeLogging SQL logging on/off flag. "false" is the default.
+     */
     public void setExecuteLogging(boolean executeLogging) {
         this.executeLogging = executeLogging;
     }
 
     public DefaultJooqFactory createFactory(DataSourceFactory dataSourceFactory) {
 
+        // pretty evil side effect on system properties. Wish Jooq had abstracted its properties bootstrap.
+        // Still the logo has to go.
+        System.setProperty("org.jooq.no-logo", "true");
 
         Settings defaultSettings = SettingsTools.defaultSettings();
         defaultSettings.setExecuteLogging(executeLogging);
