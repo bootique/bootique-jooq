@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+Jooq reverse engineering file. Running it requires starting a Derby network server,
+and creating a schema with "ij":
+
+   connect 'jdbc:derby://localhost:1527/bqjooqtest;create=true';
+   CREATE TABLE "test_table" ("id" integer primary key, "name" varchar(100));
+
+and then reverse engineering it with Jooq uisng this descriptor. E.g.:
+
+   java -classpath \
+     jooq-3.8.2.jar:jooq-meta-3.8.2.jar:jooq-codegen-3.8.2.jar:derbyclient.jar:derby.jar \
+        org.jooq.util.GenerationTool ./src/test/resources/library.xml
+
+-->
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.8.0.xsd">
+    <jdbc>
+        <driver>org.apache.derby.jdbc.ClientDriver</driver>
+        <url>jdbc:derby://localhost:1527/bqjooqtest</url>
+        <user>sa</user>
+        <password>dummy</password>
+    </jdbc>
+    <generator>
+        <name>org.jooq.util.JavaGenerator</name>
+        <database>
+            <name>org.jooq.util.derby.DerbyDatabase</name>
+            <includes>.*</includes>
+            <inputSchema>APP</inputSchema>
+        </database>
+        <target>
+            <packageName>io.bootique.jooq.unit.generated</packageName>
+            <directory>src/test/java</directory>
+        </target>
+    </generator>
+</configuration>

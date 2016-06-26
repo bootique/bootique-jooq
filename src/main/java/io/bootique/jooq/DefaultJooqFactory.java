@@ -3,15 +3,21 @@ package io.bootique.jooq;
 
 import com.nhl.bootique.jdbc.DataSourceFactory;
 import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 
+import javax.sql.DataSource;
 import java.util.Collection;
+import java.util.Objects;
 
 public class DefaultJooqFactory implements JooqFactory {
 
     private DataSourceFactory dataSourceFactory;
+    private SQLDialect dialect;
 
-    public DefaultJooqFactory(DataSourceFactory dataSourceFactory) {
+    public DefaultJooqFactory(DataSourceFactory dataSourceFactory, SQLDialect dialect) {
         this.dataSourceFactory = dataSourceFactory;
+        this.dialect = Objects.requireNonNull(dialect);
     }
 
     @Override
@@ -33,6 +39,8 @@ public class DefaultJooqFactory implements JooqFactory {
 
     @Override
     public DSLContext newContext(String dataSource) {
-        return null;
+
+        DataSource ds = dataSourceFactory.forName(dataSource);
+        return DSL.using(ds, dialect);
     }
 }

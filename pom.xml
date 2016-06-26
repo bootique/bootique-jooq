@@ -51,6 +51,11 @@
                 <artifactId>bootique-jdbc</artifactId>
                 <version>${bootique-jdbc-version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derby</artifactId>
+                <version>10.12.1.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -69,6 +74,11 @@
         <dependency>
             <groupId>com.nhl.bootique</groupId>
             <artifactId>bootique-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
             <scope>test</scope>
         </dependency>
 
