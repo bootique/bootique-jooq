@@ -6,3 +6,4 @@ jdbc:
 
 jooq:
   dialect: DERBY
+  executeLogging: true

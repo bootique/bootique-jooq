@@ -3,6 +3,7 @@ package io.bootique.jooq;
 import com.nhl.bootique.BQRuntime;
 import com.nhl.bootique.jdbc.JdbcModule;
 import com.nhl.bootique.test.junit.BQTestFactory;
+import io.bootique.jooq.unit.DerbyManager;
 import io.bootique.jooq.unit.generated.Tables;
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -17,6 +18,9 @@ public class JooqModuleIT {
 
     @Rule
     public BQTestFactory stack = new BQTestFactory();
+
+    @Rule
+    public DerbyManager derby = new DerbyManager("target/derby/jooq1");
 
     @Test
     public void testNewContext() {
