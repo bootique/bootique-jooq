@@ -15,14 +15,14 @@ Include ```bootique-jooq```:
         <dependency>
             <groupId>io.bootique.bom</groupId>
             <artifactId>bootique-io-bom</artifactId>
-            <version>0.18-SNAPSHOT</version>
+            <version>0.1-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>com.nhl.bootique.bom</groupId>
             <artifactId>bootique-bom</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.18-SNAPSHOT</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
