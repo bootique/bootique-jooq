@@ -36,7 +36,7 @@ public class DefaultJooqFactory implements JooqFactory {
                 return newContext(allNames.iterator().next());
             default:
                 throw new IllegalStateException("Default DataSource ambiguity. " +
-                        "More then one DataSource is provided by 'bootique-jdbc");
+                        "More then one DataSource is provided by 'bootique-jdbc'");
         }
     }
 
