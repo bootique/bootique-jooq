@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/bootique/bootique-jooq.svg)](https://travis-ci.org/bootique/bootique-jooq)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.bootique/bootique-jooq/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.bootique/bootique-jooq/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.bootique.jooq/bootique-jooq/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.bootique.jooq/bootique-jooq/)
 
 # bootique-jooq
 
