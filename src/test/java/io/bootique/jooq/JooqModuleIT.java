@@ -1,10 +1,10 @@
 package io.bootique.jooq;
 
-import com.nhl.bootique.BQRuntime;
-import com.nhl.bootique.jdbc.JdbcModule;
-import com.nhl.bootique.test.junit.BQTestFactory;
+import io.bootique.BQRuntime;
+import io.bootique.jdbc.JdbcModule;
 import io.bootique.jooq.unit.DerbyManager;
 import io.bootique.jooq.unit.generated.Tables;
+import io.bootique.test.junit.BQTestFactory;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.junit.Rule;

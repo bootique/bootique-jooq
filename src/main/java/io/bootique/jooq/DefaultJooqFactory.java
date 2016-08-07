@@ -1,7 +1,7 @@
 package io.bootique.jooq;
 
 
-import com.nhl.bootique.jdbc.DataSourceFactory;
+import io.bootique.jdbc.DataSourceFactory;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.conf.Settings;

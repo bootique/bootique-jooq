@@ -14,14 +14,7 @@ Include ```bootique-jooq```:
         <dependency>
             <groupId>io.bootique.bom</groupId>
             <artifactId>bootique-bom</artifactId>
-            <version>0.18</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.nhl.bootique.bom</groupId>
-            <artifactId>bootique-bom</artifactId>
-            <version>0.18</version>
+            <version>0.19</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
