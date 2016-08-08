@@ -3,9 +3,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.bootique.parent</groupId>
-        <artifactId>bootique-parent</artifactId>
-        <version>0.12</version>
+        <groupId>io.bootique.modules.parent</groupId>
+        <artifactId>bootique-modules-parent</artifactId>
+        <version>0.2</version>
     </parent>
 
     <groupId>io.bootique.jooq</groupId>
@@ -21,12 +21,6 @@
         <bootique-jdbc-version>0.11-SNAPSHOT</bootique-jdbc-version>
         <jooq-version>3.8.2</jooq-version>
     </properties>
-
-    <scm>
-        <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-jooq</developerConnection>
-        <url>https://github.com/bootique/bootique-jooq</url>
-        <tag>HEAD</tag>
-    </scm>
 
     <dependencyManagement>
         <dependencies>
@@ -108,14 +102,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <!-- Optional profile used to sign artifacts -->
     <profiles>
