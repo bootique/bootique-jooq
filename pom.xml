@@ -10,7 +10,7 @@
 
     <groupId>io.bootique.jooq</groupId>
     <artifactId>bootique-jooq</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
 
     <name>bootique-jooq: Jooq Integration with Bootique and Jersey</name>
@@ -25,7 +25,7 @@
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-jooq</developerConnection>
         <url>https://github.com/bootique/bootique-jooq</url>
-        <tag>HEAD</tag>
+        <tag>bootique-jooq-0.2</tag>
     </scm>
 
     <distributionManagement>
