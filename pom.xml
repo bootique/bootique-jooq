@@ -17,8 +17,8 @@
     <description>Provides Jooq integration with Bootique and Jersey</description>
 
     <properties>
-        <bootique-version>0.19</bootique-version>
-        <bootique-jdbc-version>0.11</bootique-jdbc-version>
+        <bootique-version>0.20-SNAPSHOT</bootique-version>
+        <bootique-jdbc-version>0.12-SNAPSHOT</bootique-jdbc-version>
         <jooq-version>3.8.2</jooq-version>
     </properties>
 
