@@ -2,7 +2,7 @@ package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
 import io.bootique.jdbc.JdbcModule;
-import io.bootique.jooq.unit.DerbyManager;
+import io.bootique.jdbc.test.junit.DerbyManager;
 import io.bootique.jooq.unit.generated.Tables;
 import io.bootique.test.junit.BQTestFactory;
 import org.jooq.DSLContext;

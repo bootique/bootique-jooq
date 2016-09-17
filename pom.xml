@@ -59,6 +59,11 @@
                 <version>${bootique-jdbc-version}</version>
             </dependency>
             <dependency>
+                <groupId>io.bootique.jdbc</groupId>
+                <artifactId>bootique-jdbc-test</artifactId>
+                <version>${bootique-jdbc-version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>1.7.13</version>
@@ -87,6 +92,11 @@
             <groupId>io.bootique</groupId>
             <artifactId>bootique-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc-test</artifactId>
+            <version>${bootique-jdbc-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
