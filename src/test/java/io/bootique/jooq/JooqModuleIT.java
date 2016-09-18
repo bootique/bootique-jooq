@@ -2,7 +2,7 @@ package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
 import io.bootique.jdbc.JdbcModule;
-import io.bootique.jdbc.test.junit.DerbyManager;
+import io.bootique.jdbc.test.junit.DerbyDatabase;
 import io.bootique.jooq.unit.generated.Tables;
 import io.bootique.test.junit.BQTestFactory;
 import org.jooq.DSLContext;
@@ -20,14 +20,15 @@ public class JooqModuleIT {
     public BQTestFactory stack = new BQTestFactory();
 
     @Rule
-    public DerbyManager derby = new DerbyManager("target/derby/jooq1");
+    public DerbyDatabase derby = new DerbyDatabase("target/derby/jooq1");
 
     @Test
     public void testNewContext() {
 
-        BQRuntime runtime = stack.newRuntime().configurator(bootique ->
-                bootique.modules(JdbcModule.class, JooqModule.class)
-        ).build("--config=classpath:test.yml").getRuntime();
+        BQRuntime runtime = stack.app("--config=classpath:test.yml")
+                .modules(JdbcModule.class, JooqModule.class)
+                .createRuntime()
+                .getRuntime();
 
         try (DSLContext c = runtime.getInstance(JooqFactory.class).newContext()) {
 
