@@ -1,8 +1,6 @@
 package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
-import io.bootique.jdbc.JdbcModule;
-import io.bootique.jdbc.test.junit.DerbyDatabase;
 import io.bootique.jooq.unit.generated.Tables;
 import io.bootique.test.junit.BQTestFactory;
 import org.jooq.DSLContext;
@@ -15,18 +13,14 @@ import static org.junit.Assert.assertNotNull;
 
 
 public class JooqModuleIT {
-
     @Rule
     public BQTestFactory stack = new BQTestFactory();
-
-    @Rule
-    public DerbyDatabase derby = new DerbyDatabase("target/derby/jooq1");
 
     @Test
     public void testNewContext() {
 
         BQRuntime runtime = stack.app("--config=classpath:test.yml")
-                .modules(JdbcModule.class, JooqModule.class)
+                .autoLoadModules()
                 .createRuntime()
                 .getRuntime();
 
