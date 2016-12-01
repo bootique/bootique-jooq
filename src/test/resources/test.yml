@@ -1,7 +1,6 @@
 jdbc:
   default:
       url: jdbc:derby:target/derby/jooq1;create=true
-      driver: org.apache.derby.jdbc.EmbeddedDriver
       initialSize: 1
 
 jooq:

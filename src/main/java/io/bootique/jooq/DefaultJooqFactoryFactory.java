@@ -42,7 +42,7 @@ public class DefaultJooqFactoryFactory {
         Settings defaultSettings = SettingsTools.defaultSettings();
         defaultSettings.setExecuteLogging(executeLogging);
 
-        // TODO: guess the dialect based on the connection info
+        // TODO: guess the dialect based on the connection info - https://github.com/bootique/bootique-jooq/issues/3
         Objects.requireNonNull(dialect);
 
         return new DefaultJooqFactory(dataSourceFactory, dialect, defaultSettings);
