@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.bootique.modules.parent</groupId>
         <artifactId>bootique-modules-parent</artifactId>
-        <version>0.2</version>
+        <version>0.7</version>
     </parent>
 
     <groupId>io.bootique.jooq</groupId>
@@ -17,8 +17,8 @@
     <description>Provides Jooq integration with Bootique</description>
 
     <properties>
-        <bootique-version>0.20</bootique-version>
-        <bootique-jdbc-version>0.12</bootique-jdbc-version>
+        <bootique-version>0.22-SNAPSHOT</bootique-version>
+        <bootique-jdbc-version>0.14-SNAPSHOT</bootique-jdbc-version>
         <jooq-version>3.8.2</jooq-version>
     </properties>
 
@@ -41,7 +41,7 @@
             <dependency>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq</artifactId>
-                <version>3.8.2</version>
+                <version>${jooq-version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique</groupId>
@@ -66,7 +66,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.7.13</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.derby</groupId>

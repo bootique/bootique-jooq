@@ -1,5 +1,7 @@
 package io.bootique.jooq;
 
+import io.bootique.annotation.BQConfig;
+import io.bootique.annotation.BQConfigProperty;
 import io.bootique.jdbc.DataSourceFactory;
 import org.jooq.SQLDialect;
 import org.jooq.conf.Settings;
@@ -7,6 +9,7 @@ import org.jooq.conf.SettingsTools;
 
 import java.util.Objects;
 
+@BQConfig
 public class DefaultJooqFactoryFactory {
 
     private SQLDialect dialect = SQLDialect.DEFAULT;
@@ -19,6 +22,7 @@ public class DefaultJooqFactoryFactory {
      *
      * @param dialect a Jooq SQL dialect object.
      */
+    @BQConfigProperty("An optional RDBMS-specific SQL dialect we'll be working with. E.g. 'MariaDB'.")
     public void setDialect(SQLDialect dialect) {
         this.dialect = dialect;
     }
@@ -29,6 +33,7 @@ public class DefaultJooqFactoryFactory {
      *
      * @param executeLogging SQL logging on/off flag. "false" is the default.
      */
+    @BQConfigProperty("Enables or disables SQL logging. False by default.")
     public void setExecuteLogging(boolean executeLogging) {
         this.executeLogging = executeLogging;
     }
