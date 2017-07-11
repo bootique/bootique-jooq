@@ -21,8 +21,7 @@ public class JooqModuleIT {
 
         BQRuntime runtime = stack.app("--config=classpath:test.yml")
                 .autoLoadModules()
-                .createRuntime()
-                .getRuntime();
+                .createRuntime();
 
         try (DSLContext c = runtime.getInstance(JooqFactory.class).newContext()) {
 
