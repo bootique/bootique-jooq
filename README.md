@@ -3,7 +3,7 @@
 
 # bootique-jooq
 
-Integration of Jooq SQL builder with Bootique.
+Integration of Jooq SQL builder with Bootique. See usage example [bootique-jooq-demo](https://github.com/bootique-examples/bootique-jooq-demo).
 
 ## Usage
 
