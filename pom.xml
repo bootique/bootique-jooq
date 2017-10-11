@@ -18,7 +18,6 @@
 
     <properties>
         <bootique-version>${project.version}</bootique-version>
-        <bootique-jdbc-version>${project.version}</bootique-jdbc-version>
         <jooq-version>3.8.2</jooq-version>
     </properties>
 
@@ -56,12 +55,12 @@
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc</artifactId>
-                <version>${bootique-jdbc-version}</version>
+                <version>${bootique-version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc-test</artifactId>
-                <version>${bootique-jdbc-version}</version>
+                <version>${bootique-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -96,7 +95,7 @@
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
             <artifactId>bootique-jdbc-test</artifactId>
-            <version>${bootique-jdbc-version}</version>
+            <version>${bootique-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
