@@ -59,6 +59,11 @@
             </dependency>
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
+                <artifactId>bootique-jdbc-tomcat</artifactId>
+                <version>${bootique-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.bootique.jdbc</groupId>
                 <artifactId>bootique-jdbc-test</artifactId>
                 <version>${bootique-version}</version>
             </dependency>
@@ -90,6 +95,11 @@
         <dependency>
             <groupId>io.bootique</groupId>
             <artifactId>bootique-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc-tomcat</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
