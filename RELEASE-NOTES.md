@@ -1,3 +1,7 @@
+## 0.25
+
+* #7 Upgrade to bootique-modules-parent 0.8
+
 ## 0.5
 
 * #6 Upgrade to BQ 0.23  
