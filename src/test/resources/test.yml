@@ -1,8 +1,0 @@
-jdbc:
-  default:
-      url: jdbc:derby:target/derby/jooq1;create=true
-      initialSize: 1
-
-jooq:
-  dialect: DERBY
-  executeLogging: true

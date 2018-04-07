@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -18,7 +19,8 @@
 
     <properties>
         <bootique-version>${project.version}</bootique-version>
-        <jooq-version>3.8.2</jooq-version>
+        <jooq-version>3.10.6</jooq-version>
+        <mysql-driver-version>8.0.8-dmr</mysql-driver-version>
     </properties>
 
     <scm>
@@ -59,7 +61,7 @@
             </dependency>
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
-                <artifactId>bootique-jdbc-tomcat</artifactId>
+                <artifactId>bootique-jdbc-hikaricp</artifactId>
                 <version>${bootique-version}</version>
             </dependency>
             <dependency>
@@ -73,14 +75,36 @@
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.derby</groupId>
-                <artifactId>derby</artifactId>
-                <version>10.12.1.1</version>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>mysql</artifactId>
+                <version>1.4.3</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-driver-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <!-- Compile dependencies -->
+        <dependency>
+            <groupId>io.bootique</groupId>
+            <artifactId>bootique</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.bootique.jdbc</groupId>
+            <artifactId>bootique-jdbc</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Unit test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -99,7 +123,7 @@
         </dependency>
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc-tomcat</artifactId>
+            <artifactId>bootique-jdbc-hikaricp</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -108,8 +132,13 @@
             <version>${bootique-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -117,24 +146,62 @@
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- Compile dependencies -->
-        <dependency>
-            <groupId>io.bootique</groupId>
-            <artifactId>bootique</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jooq</artifactId>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jooq</groupId>
+                    <artifactId>jooq-codegen-maven</artifactId>
+                    <version>${jooq-version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <version>${mysql-driver-version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <!--
+                            Setup a DB for reverse engineering:
+
+                            docker run -n jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
+                            # this comes from init_mysql.sql
+                            docker exec -i jooqreveng mysql -uroot -proot \
+                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
+                            docker exec -i jooqreveng mysql -uroot -proot \
+                                <<< 'CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));'
+
+                            mvn org.jooq:jooq-codegen-maven:generate
+                        -->
+                        <jdbc>
+                            <driver>com.mysql.jdbc.Driver</driver>
+                            <url>jdbc:mysql://localhost:4306/jooqdb</url>
+                            <user>root</user>
+                            <password>root</password>
+                        </jdbc>
+
+                        <!-- Generator parameters -->
+                        <generator>
+                            <database>
+                                <name>org.jooq.util.mysql.MySQLDatabase</name>
+                                <includes>.*</includes>
+                                <excludes></excludes>
+
+                                <!-- Hmm.. "jooqdb" is a catalog, not schema in MySQL -->
+                                <inputSchema>jooqdb</inputSchema>
+                            </database>
+                            <target>
+                                <packageName>io.bootique.jooq.unit.generated</packageName>
+                                <directory>src/test/java</directory>
+                            </target>
+                        </generator>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <!-- Optional profile used to sign artifacts -->
     <profiles>

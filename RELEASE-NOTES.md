@@ -1,3 +1,7 @@
+## 0.26
+
+* #8 Upgrade Jooq to 3.10.6
+
 ## 0.25
 
 * #7 Upgrade to bootique-modules-parent 0.8
