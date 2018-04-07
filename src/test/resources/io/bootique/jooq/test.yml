@@ -1,7 +1,3 @@
-jdbc:
-  default:
-    type: hikari
-
 jooq:
   dialect: MYSQL
   executeLogging: true

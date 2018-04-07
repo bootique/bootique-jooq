@@ -42,7 +42,7 @@ public class JooqMySQLIT {
     public void testNewContext() {
 
         BQRuntime runtime = stack.app("--config=classpath:io/bootique/jooq/test.yml")
-                .property("bq.jdbc.default.url", dbUrl())
+                .property("bq.jdbc.default.jdbcUrl", dbUrl())
                 .property("bq.jdbc.default.username", USER_NAME)
                 .property("bq.jdbc.default.password", PASSWORD)
                 .autoLoadModules()
