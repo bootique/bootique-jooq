@@ -166,7 +166,8 @@
                         <!--
                             Setup a DB for reverse engineering:
 
-                            docker run -n jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
+                            # prepend a dash to -name .. Can't place dash-dash in XML comment...
+                            docker run -name jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
                             # this comes from init_mysql.sql
                             docker exec -i jooqreveng mysql -uroot -proot \
                                 <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
