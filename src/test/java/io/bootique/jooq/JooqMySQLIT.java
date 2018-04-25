@@ -21,7 +21,7 @@ public class JooqMySQLIT {
     private static final String PASSWORD = "secret";
 
     @ClassRule
-    public static MySQLContainer MYSQL = (MySQLContainer) new MySQLContainer()
+    public static MySQLContainer MYSQL = (MySQLContainer) new MySQLContainer("mysql:5.7")
             .withDatabaseName(DB_NAME)
             .withUsername(USER_NAME)
             .withPassword(PASSWORD)
