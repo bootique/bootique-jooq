@@ -18,7 +18,7 @@
   -->
 
 [![Build Status](https://travis-ci.org/bootique/bootique-jooq.svg)](https://travis-ci.org/bootique/bootique-jooq)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.bootique.jooq/bootique-jooq/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.bootique.jooq/bootique-jooq/)
+[![Maven Central](https://img.shields.io/maven-central/v/io.bootique.jooq/bootique-jooq.svg?colorB=brightgreen)](https://search.maven.org/artifact/io.bootique.jooq/bootique-jooq/)
 
 # bootique-jooq
 
