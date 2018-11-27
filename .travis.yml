@@ -29,22 +29,12 @@ jobs:
         - mvn clean verify
     - stage: build
       if: branch != master OR type IN (pull_request)
-      jdk: oraclejdk10
-      script:
-        - mvn clean verify
-    - stage: build
-      if: branch != master OR type IN (pull_request)
       jdk: oraclejdk8
       script:
         - mvn clean verify
     - stage: build
       if: branch = master AND type IN (push)
       jdk: openjdk11
-      script:
-        - mvn clean verify
-    - stage: build
-      if: branch = master AND type IN (push)
-      jdk: oraclejdk10
       script:
         - mvn clean verify
     - stage: build
