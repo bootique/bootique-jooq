@@ -18,8 +18,7 @@
   under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -30,7 +29,7 @@
 
     <groupId>io.bootique.jooq</groupId>
     <artifactId>bootique-jooq</artifactId>
-    <version>1.0.RC1-SNAPSHOT</version>
+    <version>1.0.RC1</version>
     <packaging>jar</packaging>
 
     <name>bootique-jooq: Jooq Integration with Bootique</name>
@@ -45,7 +44,7 @@
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-jooq</developerConnection>
         <url>https://github.com/bootique/bootique-jooq</url>
-        <tag>HEAD</tag>
+        <tag>1.0.RC1</tag>
     </scm>
 
     <distributionManagement>
@@ -184,8 +183,7 @@
                             docker run -name jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
                             # this comes from init_mysql.sql
                             docker exec -i jooqreveng mysql -uroot -proot \
-                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
-                            docker exec -i jooqreveng mysql -uroot -proot \
+                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;' docker exec -i jooqreveng mysql -uroot -proot \
                                 <<< 'CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));'
 
                             mvn org.jooq:jooq-codegen-maven:generate
@@ -202,7 +200,7 @@
                             <database>
                                 <name>org.jooq.util.mysql.MySQLDatabase</name>
                                 <includes>.*</includes>
-                                <excludes></excludes>
+                                <excludes />
 
                                 <!-- Hmm.. "jooqdb" is a catalog, not schema in MySQL -->
                                 <inputSchema>jooqdb</inputSchema>
