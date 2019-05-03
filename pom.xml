@@ -29,7 +29,7 @@
 
     <groupId>io.bootique.jooq</groupId>
     <artifactId>bootique-jooq</artifactId>
-    <version>1.0.RC2-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>bootique-jooq: Jooq Integration with Bootique</name>
@@ -44,7 +44,7 @@
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-jooq</developerConnection>
         <url>https://github.com/bootique/bootique-jooq</url>
-        <tag>HEAD</tag>
+        <tag>1.0</tag>
     </scm>
 
     <distributionManagement>
@@ -183,9 +183,7 @@
                             docker run -name jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
                             # this comes from init_mysql.sql
                             docker exec -i jooqreveng mysql -uroot -proot \
-                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;' docker exec -i jooqreveng mysql -uroot -proot \ <<< 'CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));'
-
-                            mvn org.jooq:jooq-codegen-maven:generate
+                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;' docker exec -i jooqreveng mysql -uroot -proot \ <<< 'CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));' mvn org.jooq:jooq-codegen-maven:generate
                         -->
                         <jdbc>
                             <driver>com.mysql.jdbc.Driver</driver>
