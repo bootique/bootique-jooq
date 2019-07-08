@@ -29,9 +29,7 @@ public class JooqModule extends ConfigModule {
 
     @Provides
     @Singleton
-    JooqFactory provideJooqFactory(ConfigurationFactory configurationFactory, DataSourceFactory dataSourceFactory) {
-        return configurationFactory
-                .config(DefaultJooqFactoryFactory.class, configPrefix)
-                .createFactory(dataSourceFactory);
+    JooqFactory provideJooqFactory(ConfigurationFactory configFactory, DataSourceFactory dataSourceFactory) {
+        return config(DefaultJooqFactoryFactory.class, configFactory).createFactory(dataSourceFactory);
     }
 }
