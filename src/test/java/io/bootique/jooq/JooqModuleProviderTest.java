@@ -39,7 +39,7 @@ public class JooqModuleProviderTest {
 
     @Test
     public void testModuleDeclaresDependencies() {
-        final BQRuntime bqRuntime = testFactory.app().module(new JooqModuleProvider()).createRuntime();
+        final BQRuntime bqRuntime = testFactory.app().moduleProvider(new JooqModuleProvider()).createRuntime();
         BQRuntimeChecker.testModulesLoaded(bqRuntime,
                 JdbcModule.class,
                 JooqModule.class
