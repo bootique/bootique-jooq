@@ -1,3 +1,7 @@
+## 2.0
+
+* Upgrade to the latest OSS version of Jooq - 3.13.3
+
 ## 1.0.RC1
 
 * #8 Upgrade Jooq to 3.10.6
