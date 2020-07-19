@@ -20,54 +20,43 @@
 package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
+import io.bootique.Bootique;
+import io.bootique.jdbc.junit5.tc.TcTester;
 import io.bootique.jooq.unit.generated.Tables;
-import io.bootique.test.junit.BQTestFactory;
+import io.bootique.junit5.BQApp;
+import io.bootique.junit5.BQTest;
+import io.bootique.junit5.BQTestTool;
 import org.jooq.DSLContext;
 import org.jooq.Record;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-
+@Testcontainers
+@BQTest
 public class JooqMySQLIT {
 
-    private static final String DB_NAME = "jooqdb";
-    private static final String USER_NAME = "mysqluser";
-    private static final String PASSWORD = "secret";
+    @Container
+    static final MySQLContainer db = new MySQLContainer("mysql:8.0.20").withDatabaseName("jooqdb");
 
-    @ClassRule
-    public static MySQLContainer MYSQL = (MySQLContainer) new MySQLContainer("mysql:8.0.20")
-            .withDatabaseName(DB_NAME)
-            .withUsername(USER_NAME)
-            .withPassword(PASSWORD)
-            .withEnv("MYSQL_ROOT_HOST", "%");
+    @BQTestTool
+    static final TcTester dbTester = TcTester.db(db);
 
-    @Rule
-    public BQTestFactory stack = new BQTestFactory();
-
-    private static String dbUrl() {
-        return String.format("jdbc:mysql://%s:%s/%s?TC_INITSCRIPT=%s",
-                MYSQL.getContainerIpAddress(),
-                MYSQL.getMappedPort(MySQLContainer.MYSQL_PORT),
-                DB_NAME,
-                "io/bootique/jooq/init_mysql.sql");
-    }
+    @BQApp(skipRun = true)
+    static final BQRuntime app = Bootique
+            .app("--config=classpath:io/bootique/jooq/test.yml")
+            .autoLoadModules()
+            .module(dbTester.moduleWithTestDataSource("db"))
+            .createRuntime();
 
     @Test
     public void testNewContext() {
 
-        BQRuntime runtime = stack.app("--config=classpath:io/bootique/jooq/test.yml")
-                .property("bq.jdbc.default.jdbcUrl", dbUrl())
-                .property("bq.jdbc.default.username", USER_NAME)
-                .property("bq.jdbc.default.password", PASSWORD)
-                .autoLoadModules()
-                .createRuntime();
-
-        try (DSLContext c = runtime.getInstance(JooqFactory.class).newContext()) {
+        try (DSLContext c = app.getInstance(JooqFactory.class).newContext()) {
 
             c.createTable(Tables.TEST_TABLE).columns(Tables.TEST_TABLE.fields()).execute();
 

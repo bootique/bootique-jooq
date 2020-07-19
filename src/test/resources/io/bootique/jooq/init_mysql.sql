@@ -15,7 +15,5 @@
 -- specific language governing permissions and limitations
 -- under the License.
 
--- Used in both unit tests and test class generation
-
 CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));
