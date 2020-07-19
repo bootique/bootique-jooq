@@ -18,7 +18,8 @@
   under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -120,12 +121,6 @@
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
         </dependency>
-        <!-- Needed for JDK > 1.8. Presumably V 3.14.0 and newer will no longer require this dependency -->
-        <!-- https://github.com/jOOQ/jOOQ/issues/6612 -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-        </dependency>
 
         <!-- Unit test dependencies -->
         <dependency>
@@ -185,16 +180,7 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <!--
-                            Setup a DB for reverse engineering:
-
-                            # prepend a dash to -name .. Can't place dash-dash in XML comment...
-                            docker run -name jooqreveng -e MYSQL_ROOT_PASSWORD=root -p 4306:3306 -d mysql:5.7
-                            # this comes from init_mysql.sql
-                            docker exec -i jooqreveng mysql -uroot -proot \
-                                <<< 'CREATE DATABASE `jooqdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;' docker exec -i jooqreveng mysql -uroot -proot \ <<< 'CREATE TABLE `jooqdb`.`test_table` (`id` integer primary key, `name` varchar(100));' mvn org.jooq:jooq-codegen-maven:generate -->
                         <jdbc>
-                            <driver>com.mysql.jdbc.Driver</driver>
                             <url>jdbc:mysql://localhost:4306/jooqdb</url>
                             <user>root</user>
                             <password>root</password>
@@ -203,9 +189,9 @@
                         <!-- Generator parameters -->
                         <generator>
                             <database>
-                                <name>org.jooq.util.mysql.MySQLDatabase</name>
+                                <name>org.jooq.meta.mysql.MySQLDatabase</name>
                                 <includes>.*</includes>
-                                <excludes />
+                                <excludes/>
 
                                 <!-- Hmm.. "jooqdb" is a catalog, not schema in MySQL -->
                                 <inputSchema>jooqdb</inputSchema>
