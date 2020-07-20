@@ -21,7 +21,7 @@ package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
 import io.bootique.Bootique;
-import io.bootique.jdbc.junit5.tc.TcTester;
+import io.bootique.jdbc.junit5.tc.TcDbTester;
 import io.bootique.jooq.unit.generated.Tables;
 import io.bootique.junit5.BQApp;
 import io.bootique.junit5.BQTest;
@@ -44,7 +44,7 @@ public class JooqMySQLIT {
     static final MySQLContainer db = new MySQLContainer("mysql:8.0.20").withDatabaseName("jooqdb");
 
     @BQTestTool
-    static final TcTester dbTester = TcTester.db(db);
+    static final TcDbTester dbTester = TcDbTester.db(db);
 
     @BQApp(skipRun = true)
     static final BQRuntime app = Bootique
