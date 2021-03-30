@@ -17,7 +17,7 @@
   under the License.
   -->
 
-[![Build Status](https://travis-ci.org/bootique/bootique-jooq.svg)](https://travis-ci.org/bootique/bootique-jooq)
+[![build test deploy 1.x](https://github.com/bootique/bootique-jooq/actions/workflows/maven-1x.yml/badge.svg)](https://github.com/bootique/bootique-jooq/actions/workflows/maven-1x.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.bootique.jooq/bootique-jooq.svg?colorB=brightgreen)](https://search.maven.org/artifact/io.bootique.jooq/bootique-jooq/)
 
 # bootique-jooq
