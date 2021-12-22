@@ -50,7 +50,7 @@ public class JooqMySQLIT {
     public BQTestFactory stack = new BQTestFactory();
 
     private static String dbUrl() {
-        return String.format("jdbc:mysql://%s:%s/%s?TC_INITSCRIPT=%s",
+        return String.format("jdbc:mysql://%s:%s/%s?TC_INITSCRIPT=%s&useSSL=false",
                 MYSQL.getContainerIpAddress(),
                 MYSQL.getMappedPort(MySQLContainer.MYSQL_PORT),
                 DB_NAME,
