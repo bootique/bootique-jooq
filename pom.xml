@@ -39,7 +39,7 @@
         <bootique.version>${project.version}</bootique.version>
         <jooq.version>3.13.3</jooq.version>
         <mysql.driver.version>8.0.20</mysql.driver.version>
-        <testcontainers.version>1.16.0</testcontainers.version>
+        <testcontainers.version>1.17.2</testcontainers.version>
     </properties>
 
     <scm>
