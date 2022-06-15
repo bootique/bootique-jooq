@@ -24,7 +24,7 @@
     <parent>
         <groupId>io.bootique.modules.parent</groupId>
         <artifactId>bootique-modules-parent</artifactId>
-        <version>3.0.11</version>
+        <version>3.0.12</version>
     </parent>
 
     <groupId>io.bootique.jooq</groupId>
@@ -39,7 +39,6 @@
         <bootique.version>${project.version}</bootique.version>
         <jooq.version>3.13.3</jooq.version>
         <mysql.driver.version>8.0.20</mysql.driver.version>
-        <testcontainers.version>1.17.2</testcontainers.version>
     </properties>
 
     <scm>
