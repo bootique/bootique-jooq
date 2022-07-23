@@ -9,37 +9,20 @@ import io.bootique.jooq.unit.generated.tables.records.TestTableRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
+import org.jooq.impl.DSL;
 import org.jooq.impl.Internal;
 
 
 /**
- * A class modelling foreign key relationships and constraints of tables of 
- * the <code>jooqdb</code> schema.
+ * A class modelling foreign key relationships and constraints of tables in
+ * jooqdb.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Keys {
 
     // -------------------------------------------------------------------------
-    // IDENTITY definitions
-    // -------------------------------------------------------------------------
-
-
-    // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<TestTableRecord> KEY_TEST_TABLE_PRIMARY = UniqueKeys0.KEY_TEST_TABLE_PRIMARY;
-
-    // -------------------------------------------------------------------------
-    // FOREIGN KEY definitions
-    // -------------------------------------------------------------------------
-
-
-    // -------------------------------------------------------------------------
-    // [#1459] distribute members to avoid static initialisers > 64kb
-    // -------------------------------------------------------------------------
-
-    private static class UniqueKeys0 {
-        public static final UniqueKey<TestTableRecord> KEY_TEST_TABLE_PRIMARY = Internal.createUniqueKey(TestTable.TEST_TABLE, "KEY_test_table_PRIMARY", new TableField[] { TestTable.TEST_TABLE.ID }, true);
-    }
+    public static final UniqueKey<TestTableRecord> KEY_TEST_TABLE_PRIMARY = Internal.createUniqueKey(TestTable.TEST_TABLE, DSL.name("KEY_test_table_PRIMARY"), new TableField[] { TestTable.TEST_TABLE.ID }, true);
 }

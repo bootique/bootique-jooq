@@ -8,9 +8,6 @@ import io.bootique.jooq.unit.generated.Jooqdb;
 import io.bootique.jooq.unit.generated.Keys;
 import io.bootique.jooq.unit.generated.tables.records.TestTableRecord;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
@@ -22,6 +19,7 @@ import org.jooq.TableField;
 import org.jooq.TableOptions;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 
@@ -31,7 +29,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TestTable extends TableImpl<TestTableRecord> {
 
-    private static final long serialVersionUID = 1857909398;
+    private static final long serialVersionUID = 1L;
 
     /**
      * The reference instance of <code>jooqdb.test_table</code>
@@ -49,18 +47,19 @@ public class TestTable extends TableImpl<TestTableRecord> {
     /**
      * The column <code>jooqdb.test_table.id</code>.
      */
-    public final TableField<TestTableRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<TestTableRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>jooqdb.test_table.name</code>.
      */
-    public final TableField<TestTableRecord, String> NAME = createField(DSL.name("name"), org.jooq.impl.SQLDataType.VARCHAR(100), this, "");
+    public final TableField<TestTableRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(100), this, "");
 
-    /**
-     * Create a <code>jooqdb.test_table</code> table reference
-     */
-    public TestTable() {
-        this(DSL.name("test_table"), null);
+    private TestTable(Name alias, Table<TestTableRecord> aliased) {
+        this(alias, aliased, null);
+    }
+
+    private TestTable(Name alias, Table<TestTableRecord> aliased, Field<?>[] parameters) {
+        super(alias, null, aliased, parameters, DSL.comment(""), TableOptions.table());
     }
 
     /**
@@ -77,12 +76,11 @@ public class TestTable extends TableImpl<TestTableRecord> {
         this(alias, TEST_TABLE);
     }
 
-    private TestTable(Name alias, Table<TestTableRecord> aliased) {
-        this(alias, aliased, null);
-    }
-
-    private TestTable(Name alias, Table<TestTableRecord> aliased, Field<?>[] parameters) {
-        super(alias, null, aliased, parameters, DSL.comment(""), TableOptions.table());
+    /**
+     * Create a <code>jooqdb.test_table</code> table reference
+     */
+    public TestTable() {
+        this(DSL.name("test_table"), null);
     }
 
     public <O extends Record> TestTable(Table<O> child, ForeignKey<O, TestTableRecord> key) {
@@ -91,17 +89,12 @@ public class TestTable extends TableImpl<TestTableRecord> {
 
     @Override
     public Schema getSchema() {
-        return Jooqdb.JOOQDB;
+        return aliased() ? null : Jooqdb.JOOQDB;
     }
 
     @Override
     public UniqueKey<TestTableRecord> getPrimaryKey() {
         return Keys.KEY_TEST_TABLE_PRIMARY;
-    }
-
-    @Override
-    public List<UniqueKey<TestTableRecord>> getKeys() {
-        return Arrays.<UniqueKey<TestTableRecord>>asList(Keys.KEY_TEST_TABLE_PRIMARY);
     }
 
     @Override

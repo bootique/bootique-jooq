@@ -19,7 +19,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TestTableRecord extends UpdatableRecordImpl<TestTableRecord> implements Record2<Integer, String> {
 
-    private static final long serialVersionUID = 1386409854;
+    private static final long serialVersionUID = 1L;
 
     /**
      * Setter for <code>jooqdb.test_table.id</code>.
@@ -138,7 +138,7 @@ public class TestTableRecord extends UpdatableRecordImpl<TestTableRecord> implem
     public TestTableRecord(Integer id, String name) {
         super(TestTable.TEST_TABLE);
 
-        set(0, id);
-        set(1, name);
+        setId(id);
+        setName(name);
     }
 }

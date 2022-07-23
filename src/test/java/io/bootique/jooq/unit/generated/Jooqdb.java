@@ -20,7 +20,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Jooqdb extends SchemaImpl {
 
-    private static final long serialVersionUID = 1953357706;
+    private static final long serialVersionUID = 1L;
 
     /**
      * The reference instance of <code>jooqdb</code>
@@ -47,7 +47,8 @@ public class Jooqdb extends SchemaImpl {
 
     @Override
     public final List<Table<?>> getTables() {
-        return Arrays.<Table<?>>asList(
-            TestTable.TEST_TABLE);
+        return Arrays.asList(
+            TestTable.TEST_TABLE
+        );
     }
 }

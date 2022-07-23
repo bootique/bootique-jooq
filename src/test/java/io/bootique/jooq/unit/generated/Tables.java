@@ -8,7 +8,7 @@ import io.bootique.jooq.unit.generated.tables.TestTable;
 
 
 /**
- * Convenience access to all tables in jooqdb
+ * Convenience access to all tables in jooqdb.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {

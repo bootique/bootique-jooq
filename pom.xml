@@ -37,7 +37,7 @@
 
     <properties>
         <bootique.version>${project.version}</bootique.version>
-        <jooq.version>3.13.3</jooq.version>
+        <jooq.version>3.16.8</jooq.version>
         <mysql.driver.version>8.0.28</mysql.driver.version>
     </properties>
 
