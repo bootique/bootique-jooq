@@ -54,7 +54,7 @@ public class JooqMySQLIT {
             .createRuntime();
 
     @Test
-    public void testNewContext() {
+    public void newContext() {
 
         DSLContext c = app.getInstance(JooqFactory.class).newContext();
 

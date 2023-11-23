@@ -31,12 +31,12 @@ public class JooqModuleProviderTest {
     public BQTestFactory testFactory = new BQTestFactory();
 
     @Test
-    public void testAutoLoadable() {
+    public void autoLoadable() {
         BQModuleProviderChecker.testAutoLoadable(JooqModuleProvider.class);
     }
 
     @Test
-    public void testModuleDeclaresDependencies() {
+    public void moduleDeclaresDependencies() {
         BQRuntime bqRuntime = testFactory.app().moduleProvider(new JooqModuleProvider()).createRuntime();
         BQRuntimeChecker.testModulesLoaded(bqRuntime,
                 JdbcModule.class,
