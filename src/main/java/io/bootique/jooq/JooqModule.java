@@ -19,18 +19,45 @@
 
 package io.bootique.jooq;
 
-import javax.inject.Singleton;
-
-import io.bootique.ConfigModule;
+import io.bootique.BQModuleProvider;
+import io.bootique.bootstrap.BuiltModule;
 import io.bootique.config.ConfigurationFactory;
+import io.bootique.di.BQModule;
+import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
+import io.bootique.jdbc.JdbcModule;
 
-public class JooqModule extends ConfigModule {
+import javax.inject.Singleton;
+import java.util.Collection;
+import java.util.Collections;
+
+public class JooqModule implements BQModule, BQModuleProvider {
+
+    private static final String CONFIG_PREFIX = "jooq";
+
+    @Override
+    public BuiltModule buildModule() {
+        return BuiltModule.of(new JooqModule())
+                .provider(this)
+                .description("Integrates Jooq persistence library")
+                .config(CONFIG_PREFIX, DefaultJooqFactoryFactory.class)
+                .build();
+    }
+
+    @Override
+    @Deprecated(since = "3.0", forRemoval = true)
+    public Collection<BQModuleProvider> dependencies() {
+        return Collections.singletonList(new JdbcModule());
+    }
+
+    @Override
+    public void configure(Binder binder) {
+    }
 
     @Provides
     @Singleton
     JooqFactory provideJooqFactory(ConfigurationFactory configFactory, DataSourceFactory dataSourceFactory) {
-        return config(DefaultJooqFactoryFactory.class, configFactory).createFactory(dataSourceFactory);
+        return configFactory.config(DefaultJooqFactoryFactory.class, CONFIG_PREFIX).createFactory(dataSourceFactory);
     }
 }
