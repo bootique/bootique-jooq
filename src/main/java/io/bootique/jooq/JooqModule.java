@@ -38,8 +38,7 @@ public class JooqModule implements BQModule, BQModuleProvider {
 
     @Override
     public BuiltModule buildModule() {
-        return BuiltModule.of(new JooqModule())
-                .provider(this)
+        return BuiltModule.of(this)
                 .description("Integrates Jooq persistence library")
                 .config(CONFIG_PREFIX, DefaultJooqFactoryFactory.class)
                 .build();
