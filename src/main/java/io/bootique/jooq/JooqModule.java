@@ -19,35 +19,25 @@
 
 package io.bootique.jooq;
 
-import io.bootique.BQModuleProvider;
+import io.bootique.BQModule;
 import io.bootique.ModuleCrate;
 import io.bootique.config.ConfigurationFactory;
-import io.bootique.di.BQModule;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
 import io.bootique.jdbc.DataSourceFactory;
-import io.bootique.jdbc.JdbcModule;
 
 import javax.inject.Singleton;
-import java.util.Collection;
-import java.util.Collections;
 
-public class JooqModule implements BQModule, BQModuleProvider {
+public class JooqModule implements BQModule {
 
     private static final String CONFIG_PREFIX = "jooq";
 
     @Override
-    public ModuleCrate moduleCrate() {
+    public ModuleCrate crate() {
         return ModuleCrate.of(this)
                 .description("Integrates Jooq persistence library")
                 .config(CONFIG_PREFIX, DefaultJooqFactoryFactory.class)
                 .build();
-    }
-
-    @Override
-    @Deprecated(since = "3.0", forRemoval = true)
-    public Collection<BQModuleProvider> dependencies() {
-        return Collections.singletonList(new JdbcModule());
     }
 
     @Override

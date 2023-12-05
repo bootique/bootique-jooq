@@ -19,28 +19,15 @@
 
 package io.bootique.jooq;
 
-import io.bootique.BQRuntime;
-import io.bootique.jdbc.JdbcModule;
-import io.bootique.junit5.*;
+import io.bootique.junit5.BQModuleTester;
+import io.bootique.junit5.BQTest;
 import org.junit.jupiter.api.Test;
 
 @BQTest
 public class JooqModuleTest {
 
-    @BQTestTool
-    public BQTestFactory testFactory = new BQTestFactory();
-
     @Test
-    public void autoLoadable() {
-        BQModuleProviderChecker.testAutoLoadable(JooqModule.class);
-    }
-
-    @Test
-    public void moduleDeclaresDependencies() {
-        BQRuntime bqRuntime = testFactory.app().moduleProvider(new JooqModule()).createRuntime();
-        BQRuntimeChecker.testModulesLoaded(bqRuntime,
-                JdbcModule.class,
-                JooqModule.class
-        );
+    public void check() {
+        BQModuleTester.of(JooqModule.class).testAutoLoadable().testConfig();
     }
 }
