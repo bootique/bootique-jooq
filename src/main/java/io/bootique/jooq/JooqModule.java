@@ -24,7 +24,6 @@ import io.bootique.ModuleCrate;
 import io.bootique.config.ConfigurationFactory;
 import io.bootique.di.Binder;
 import io.bootique.di.Provides;
-import io.bootique.jdbc.DataSourceFactory;
 
 import javax.inject.Singleton;
 
@@ -46,7 +45,7 @@ public class JooqModule implements BQModule {
 
     @Provides
     @Singleton
-    JooqFactory provideJooqFactory(ConfigurationFactory configFactory, DataSourceFactory dataSourceFactory) {
-        return configFactory.config(DefaultJooqFactoryFactory.class, CONFIG_PREFIX).createFactory(dataSourceFactory);
+    JooqFactory provideJooqFactory(ConfigurationFactory configFactory) {
+        return configFactory.config(DefaultJooqFactoryFactory.class, CONFIG_PREFIX).create();
     }
 }

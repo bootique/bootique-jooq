@@ -26,15 +26,23 @@ import org.jooq.SQLDialect;
 import org.jooq.conf.Settings;
 import org.jooq.conf.SettingsTools;
 
+import javax.inject.Inject;
 import java.util.Objects;
 
 @BQConfig
 public class DefaultJooqFactoryFactory {
 
+    private final DataSourceFactory dataSourceFactory;
+
     private SQLDialect dialect = SQLDialect.DEFAULT;
     private boolean executeLogging = false;
 
     // TODO: other Settings properties...
+
+    @Inject
+    public DefaultJooqFactoryFactory(DataSourceFactory dataSourceFactory) {
+        this.dataSourceFactory = dataSourceFactory;
+    }
 
     /**
      * Sets an optional dialect for the Jooq DSL.
@@ -57,7 +65,7 @@ public class DefaultJooqFactoryFactory {
         this.executeLogging = executeLogging;
     }
 
-    public DefaultJooqFactory createFactory(DataSourceFactory dataSourceFactory) {
+    public DefaultJooqFactory create() {
 
         // pretty evil side effect on system properties. Wish Jooq had abstracted its properties bootstrap.
         // Still the logo has to go.
