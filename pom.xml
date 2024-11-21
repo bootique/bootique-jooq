@@ -29,7 +29,7 @@
 
     <groupId>io.bootique.jooq</groupId>
     <artifactId>bootique-jooq</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>3.0-M6</version>
     <packaging>jar</packaging>
 
     <name>bootique-jooq: Jooq Integration with Bootique</name>
@@ -43,7 +43,7 @@
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/bootique/bootique-jooq</developerConnection>
         <url>https://github.com/bootique/bootique-jooq</url>
-        <tag>HEAD</tag>
+        <tag>3.0-M6</tag>
     </scm>
 
     <dependencyManagement>
