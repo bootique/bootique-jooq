@@ -26,7 +26,7 @@ import org.jooq.SQLDialect;
 import org.jooq.conf.Settings;
 import org.jooq.conf.SettingsTools;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.Objects;
 
 @BQConfig
