@@ -29,7 +29,7 @@
 
     <groupId>io.bootique.jooq</groupId>
     <artifactId>bootique-jooq</artifactId>
-    <version>3.0-SNAPSHOT</version>
+    <version>4.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>bootique-jooq: Jooq Integration with Bootique</name>
