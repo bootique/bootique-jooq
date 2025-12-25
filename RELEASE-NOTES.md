@@ -1,3 +1,7 @@
+## 4.0-M2
+
+* #13 Upgrade Jooq to 3.20.10
+
 ## 3.0.M1
 
 * #12 Upgrade to Jooq 3.16.x
