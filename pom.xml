@@ -24,7 +24,7 @@
     <parent>
         <groupId>io.bootique.modules.parent</groupId>
         <artifactId>bootique-modules-parent</artifactId>
-        <version>4.0.4</version>
+        <version>4.0.5</version>
     </parent>
 
     <groupId>io.bootique.jooq</groupId>
@@ -65,7 +65,7 @@
             </dependency>
             <dependency>
                 <groupId>io.bootique.jdbc</groupId>
-                <artifactId>bootique-jdbc-junit5-testcontainers</artifactId>
+                <artifactId>bootique-jdbc-junit-testcontainers</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -121,7 +121,7 @@
         <!-- Unit test dependencies -->
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
-            <artifactId>bootique-jdbc-junit5-testcontainers</artifactId>
+            <artifactId>bootique-jdbc-junit-testcontainers</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

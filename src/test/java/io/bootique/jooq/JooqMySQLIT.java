@@ -21,11 +21,11 @@ package io.bootique.jooq;
 
 import io.bootique.BQRuntime;
 import io.bootique.Bootique;
-import io.bootique.jdbc.junit5.tc.TcDbTester;
+import io.bootique.jdbc.junit.tc.TcDbTester;
 import io.bootique.jooq.unit.generated.Tables;
-import io.bootique.junit5.BQApp;
-import io.bootique.junit5.BQTest;
-import io.bootique.junit5.BQTestTool;
+import io.bootique.junit.BQApp;
+import io.bootique.junit.BQTest;
+import io.bootique.junit.BQTestTool;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.junit.jupiter.api.Test;
