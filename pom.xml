@@ -37,6 +37,7 @@
 
     <properties>
         <jooq.version>3.20.10</jooq.version>
+        <reactive.streams.version>1.0.4</reactive.streams.version>
         <mysql.version>9.6.0</mysql.version>
     </properties>
 
@@ -52,6 +53,17 @@
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq</artifactId>
                 <version>${jooq.version}</version>
+                <exclusions>
+                     <exclusion>
+                        <groupId>org.reactivestreams</groupId>
+                        <artifactId>reactive-streams</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.reactivestreams</groupId>
+                <artifactId>reactive-streams</artifactId>
+                <version>${reactive.streams.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.bootique</groupId>
